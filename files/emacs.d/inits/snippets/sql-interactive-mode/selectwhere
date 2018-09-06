@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: selectwhere
+# key: selectwhere
+# --
+SELECT $1 FROM $2 WHERE $3;

@@ -1,0 +1,21 @@
+SRC_NAME="libevent-2.1.8-stable"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/$SRC_NAME.tar.gz
+    else
+        wget https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/$SRC_NAME.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+./configure --prefix=$PREFIX_PATH
+make install clean
+
+cd ..
+rm -rf $SRC_NAME

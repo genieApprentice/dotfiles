@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: drcolumn
+# key: drcolumn
+# --
+DROP COLUMN $1;

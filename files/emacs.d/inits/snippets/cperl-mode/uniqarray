@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: uniqarray
+# key: uniqarray
+# --
+my %tmp;
+my @$1 = grep { $tmp{$_}++ < 1; } (@$2);

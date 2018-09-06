@@ -1,0 +1,15 @@
+#!/bin/sh
+
+WORKDIR=/tmp/tmpworkdir
+if [ ! -e $WORKDIR ] ; then
+    mkdir $WORKDIR
+fi
+cd $WORKDIR
+
+wget https://github.com/motemen/ghq/releases/download/v0.8.0/ghq_linux_amd64.zip
+unzip ghq_linux_amd64.zip
+if [ ! -e $HOME/.bin ] ; then
+    mkdir $HOME/.bin
+fi
+mv ghq $HOME/.bin
+rm -rf $WORKDIR

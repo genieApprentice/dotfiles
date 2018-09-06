@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chgcolumn
+# key: chgcolumn
+# --
+ALTER TABLE $1 CHANGE $2 $3;

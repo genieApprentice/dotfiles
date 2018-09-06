@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: grant
+# key: grant
+# --
+GRANT SELECT,UPDATE,INSERT,DELETE ON $1.* TO '$2@'$3';

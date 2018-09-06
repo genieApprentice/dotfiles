@@ -1,0 +1,20 @@
+SRC_NAME="emacs-25.3"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO http://ftp.jaist.ac.jp/pub/GNU/emacs/$SRC_NAME.tar.gz
+    else
+        wget http://ftp.jaist.ac.jp/pub/GNU/emacs/$SRC_NAME.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+cd $SRC_NAME
+./configure --prefix=$PREFIX_PATH --without-x
+make install clean
+
+cd ..
+rm -rf $SRC_NAME

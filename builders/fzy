@@ -1,0 +1,20 @@
+SRC_NAME="fzy-0.9"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -o $SRC_NAME.tar.gz -LO https://github.com/jhawthorn/fzy/archive/0.9.tar.gz
+    else
+        wget -O $SRC_NAME.tar.gz https://github.com/jhawthorn/fzy/archive/0.9.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+make && PREFIX=$PREFIX_PATH make install
+
+cd ..
+rm -rf $SRC_NAME

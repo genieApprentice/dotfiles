@@ -1,0 +1,13 @@
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias bd='popd'
+alias -g L='| less'
+alias -g G='| grep'
+alias ll='ls -laF'
+alias mkdir='mkdir -p'
+alias sudo='sudo '
+alias t="tmux attach || tmux"
+alias x="tmuxinator"
+alias X="tmux kill-server"
+alias ec='emacsclient -nw'

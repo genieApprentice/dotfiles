@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: addcolumn
+# key: addcolumn
+# --
+ALTER TABLE $1  ADD $2 COMMENT '$3' AFTER $4;

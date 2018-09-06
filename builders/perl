@@ -1,0 +1,22 @@
+SRC_NAME="perl-5.26.1"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO http://www.cpan.org/src/5.0/$SRC_NAME.tar.gz
+    else
+        wget http://www.cpan.org/src/5.0/$SRC_NAME.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+./Configure -des -Dprefix=$PREFIX_PATH
+make install clean
+
+cd ..
+rm -rf $SRC_NAME
+

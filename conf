@@ -1,0 +1,4 @@
+export FILES="emacs.d zsh.d tmux.conf tigrc gitconfig gitmessage script"
+export BUILDERS="ncurses libevent emacs tmux zsh fzy perl ncursesw tig lsof nc nmap"
+export SAVE_SOURCES=0
+export PREFIX_PATH="$HOME/.local"

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd $(dirname $0)
+cd ..
+ROOTPATH=$(pwd)
+
+. ./conf
+
+for file in `ls $ROOTPATH/files` ; do
+    if [ -L $HOME/.$file ] ; then
+        rm -rf $HOME/.$file
+    fi
+done
+for file in $FILES; do
+    ln -s $ROOTPATH/files/$file $HOME/.$file
+done

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shtables
+# key: shtables
+# --
+SHOW TABLES;

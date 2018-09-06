@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: DRDATABASE
+# key: DRDATABASE
+# --
+DROP DATABASES $1;

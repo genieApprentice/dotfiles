@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+cd $HOME
+
+git clone https://github.com/riywo/anyenv ~/.anyenv
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zsh.d/inits/99_local.zsh
+echo 'eval "$(anyenv init -)"' >> ~/.zsh.d/inits/99_local.zsh
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+anyenv install plenv
+anyenv install ndenv
+anyenv install pyenv
+anyenv install rbenv
+eval "$(anyenv init -)"
+
+pyenv install 3.6.4
+pyenv global 3.6.4
+rbenv install 2.4.3
+rbenv global 2.4.3
+pip install mycli
+gem install tmuxinator
+

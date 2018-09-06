@@ -1,0 +1,4 @@
+# key: cruser
+# name: cruser
+# --
+CREATE USER $1 IDENTIFIED BY $2;

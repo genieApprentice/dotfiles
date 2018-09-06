@@ -1,0 +1,21 @@
+SRC_NAME="nmap-7.60"
+
+if [ ! -f $SRC_NAME.tgz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO https://nmap.org/dist/nmap-7.60.tgz
+    else
+        wget https://nmap.org/dist/nmap-7.60.tgz
+    fi
+fi
+
+tar xzvf $SRC_NAME.tgz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tgz
+fi
+
+cd $SRC_NAME
+./configure --prefix=$PREFIX_PATH
+make install clean
+
+cd ..
+rm -rf $SRC_NAME

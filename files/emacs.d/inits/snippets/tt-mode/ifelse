@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ifelse
+# key: ifelse
+# --
+[% IF $1 %]$2[% ELSE %][% END %]

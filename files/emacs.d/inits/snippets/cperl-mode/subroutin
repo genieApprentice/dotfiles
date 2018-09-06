@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: subroutin
+# key: subroutin
+# --
+sub $1 {
+}

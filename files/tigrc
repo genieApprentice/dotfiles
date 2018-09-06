@@ -1,0 +1,138 @@
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+set vertical-split = no
+color  diff-header       default magenta
+color  diff-chunk        black   white
+set split-view-height = 80%
+set tab-size = 4
+set ignore-case = true
+set refresh-mode = auto
+#set refresh-mode = after-command
+#set refresh-mode = periodic
+#set refresh-interval = 1
+
+bind generic g      move-first-line
+bind generic E      view-grep
+bind generic G      move-last-line
+bind main    G      move-last-line
+bind main    <Esc>g :toggle commit-title-graph
+
+bind generic n      move-down
+bind generic p      move-up
+
+bind diff    n      :/^@@
+bind diff    p      :?^@@
+bind diff    <Esc>n :/^diff --(git|cc)
+bind diff    <Esc>p :?^diff --(git|cc)
+bind stage   n      :/^@@
+bind stage   p      :?^@@
+bind stage   <Esc>n :/^diff --(git|cc)
+bind stage   <Esc>p :?^diff --(git|cc)
+bind pager   n      :/^@@
+bind pager   p      :?^@@
+bind pager   <Esc>n :/^diff --(git|cc)
+bind pager   <Esc>p :?^diff --(git|cc)
+bind log     n      :/^commit
+bind log     p      :?^commit
+
+bind generic V      view-pager
+bind generic <Ctrl-s> find-next
+bind generic <Ctrl-r> find-prev
+
+bind generic <Ctrl-v> move-page-down
+bind generic <Esc>v move-page-up
+
+bind generic <Ctrl-f> scroll-right
+bind generic <Ctrl-b> scroll-left
+
+bind generic <Ctrl-g> refresh
+
+bind generic C      !git commit
+bind refs    C      !git commit
+bind main    C      !git commit
+bind generic <Esc>c !git commit --allow-empty
+bind generic +      !git commit --amend --allow-empty
+
+bind generic L      !sh -c "git reflog --pretty=raw | tig --pretty=raw"
+bind generic _      ?git reset --hard HEAD@{"%(prompt Enter HEAD@{} number: )"}
+
+bind generic ^      ?git reset --soft HEAD^
+
+bind main    .      !sh -c "git diff %(commit) | tig"
+bind diff    .      !sh -c "git diff %(commit) | tig"
+bind refs    .      !sh -c "git diff %(branch) | tig"
+bind main    <Esc>. ?sh -c "git diff %(commit)..%(prompt Enter commit ID: ) | tig"
+bind diff    <Esc>. ?sh -c "git diff %(commit)..%(prompt Enter commit ID: ) | tig"
+bind refs    <Esc>. ?sh -c "git diff %(branch)..%(prompt Enter branch name: ) | tig"
+
+bind generic ~      :goto %(commit)^
+bind generic <Esc>~ :toggle line-graphics
+
+bind generic S      ?git stash save "%(prompt Enter stash comment: )"
+bind diff    Y      ?git stash pop %(stash)
+bind stash   Y      ?git stash pop %(stash)
+bind diff    <Esc>y ?git stash apply %(stash)
+bind stash   <Esc>y ?git stash apply %(stash)
+
+bind main    H      ?git reset --hard %(commit)
+bind diff    H      ?git reset --hard %(commit)
+bind refs    H      ?git reset --hard %(branch)
+bind status  H      ?git reset --hard HEAD
+
+bind refs    D      ?git branch -d %(branch)
+bind status  D      ?git clean -d -f -- %(file)
+bind stash   D      ?git stash drop %(stash)
+bind tree    D      ?git rm %(file)
+bind main    x      ?git clean -d -f
+bind status  x      ?git clean -d -f
+bind refs    x      ?sh -c "git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
+
+bind main    !      ?git revert %(commit)
+
+bind main    K      ?git cherry-pick %(commit)
+bind diff    K      ?git cherry-pick %(commit)
+bind main    <Esc>k ?git cherry-pick -n %(commit)
+bind diff    <Esc>k ?git cherry-pick -n %(commit)
+
+bind main    =      ?zsh -c fco
+bind refs    =      ?zsh -c fco
+bind main    <Esc>= ?git checkout %(commit)
+bind generic -      ?git checkout -
+
+bind main    T ?git tag "%(prompt Enter tag name: )" %(commit)
+bind refs    T ?git tag "%(prompt Enter tag name: )" %(branch)
+
+bind main    B      ?git checkout -b "%(prompt Enter branch name: )" %(branch)
+bind refs    B      ?git checkout -b "%(prompt Enter branch name: )" %(branch)
+bind main    <Esc>b ?git checkout -b "%(prompt Enter branch name: )" %(commit)
+
+bind main    M      ?git merge %(branch)
+bind diff    M      ?git merge %(branch)
+bind refs    M      ?git merge %(branch)
+bind main    <Esc>m ?git merge %(commit)
+bind diff    <Esc>m ?git merge %(commit)
+
+bind main    R      ?git rebase %(branch)
+bind diff    R      ?git rebase %(branch)
+bind refs    R      ?git rebase %(branch)
+bind main    <Esc>r ?git rebase %(commit)
+bind diff    <Esc>r ?git rebase %(commit)
+
+bind main    I      ?git rebase -i %(branch)
+bind diff    I      ?git rebase -i %(branch)
+bind refs    I      ?git rebase -i %(branch)
+bind main    <Esc>i ?git rebase -i %(commit)
+bind diff    <Esc>i ?git rebase -i %(commit)
+
+bind generic F      ?git fetch %(remote)
+bind main    F      ?git fetch %(remote)
+
+bind generic <Esc>f :toggle file-name
+bind main    <Esc>f :toggle commit-title-refs
+
+bind generic U      ?git pull %(remote)
+
+bind main    <Esc>u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
+bind diff    <Esc>u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
+bind refs    <Esc>u ?sh -c "git checkout %(branch) && git pull %(remote) --ff-only && git checkout -"
+
+bind generic P      ?git push -u %(remote) %(repo:head)

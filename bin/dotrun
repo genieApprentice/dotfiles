@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cd $(dirname $0)
+cd ..
+ROOTPATH=$(pwd)
+
+. ./conf
+
+export PATH=$HOME/.bin:$PATH
+export PATH=$PREFIX_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$PREFIX_PATH/lib:$LD_LIBRARY_PATH
+
+tmux attach || tmux

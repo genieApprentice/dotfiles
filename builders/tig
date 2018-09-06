@@ -1,0 +1,21 @@
+SRC_NAME="tig-2.3.2"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO https://github.com/jonas/tig/releases/download/$SRC_NAME/$SRC_NAME.tar.gz
+    else
+        wget https://github.com/jonas/tig/releases/download/$SRC_NAME/$SRC_NAME.tar.gz
+    fi
+fi
+
+tar xzvf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+./autogen.sh && ./configure --without-ncurses
+LDLIBS="-lncursesw" CPPFLAGS="-DHAVE_NCURSESW_CURSES_H" make install clean prefix=$PREFIX_PATH
+
+cd ..
+rm -rf $SRC_NAME

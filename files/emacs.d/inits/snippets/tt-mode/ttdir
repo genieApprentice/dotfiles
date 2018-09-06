@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ttdir
+# key: ttdir
+# --
+[% $1 %]

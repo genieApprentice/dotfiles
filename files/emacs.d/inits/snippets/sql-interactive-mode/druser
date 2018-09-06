@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: druser
+# key: druser
+# --
+DROP USER $1;

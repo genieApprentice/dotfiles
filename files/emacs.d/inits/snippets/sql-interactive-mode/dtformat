@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dtformat
+# key: dtformat
+# --
+DATE_FORMAT($1, '$2')

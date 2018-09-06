@@ -1,0 +1,23 @@
+SRC_NAME="tmux-2.6"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO https://github.com/tmux/tmux/releases/download/2.6/$SRC_NAME.tar.gz
+    else
+        wget https://github.com/tmux/tmux/releases/download/2.6/$SRC_NAME.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+./autogen.sh
+./configure --prefix=$PREFIX_PATH
+make install clean
+
+cd ..
+rm -rf $SRC_NAME
+

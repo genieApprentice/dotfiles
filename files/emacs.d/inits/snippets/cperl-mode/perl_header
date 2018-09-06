@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: perl_header
+# key: perl_header
+# --
+use warnings;
+use strict;
+

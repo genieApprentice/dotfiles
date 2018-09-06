@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: each
+# key: each
+# --
+my ($1, $2) = each (%$3)

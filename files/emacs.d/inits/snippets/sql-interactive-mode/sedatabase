@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sedatabase
+# key: sedatabase
+# --
+SELECT DATABASE();

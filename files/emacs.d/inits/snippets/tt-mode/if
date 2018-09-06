@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: if
+# key: if
+# --
+[% IF $1 %][% END %]

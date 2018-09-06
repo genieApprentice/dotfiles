@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ternaryop
+# key: ternaryop
+# --
+? $1 : $2

@@ -1,0 +1,23 @@
+VERSION=0.7.1
+SRC_NAME=netcat-$VERSION
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -L -o $SRC_NAME.tar.gz http://sourceforge.net/projects/netcat/files/netcat/0.7.1/netcat-0.7.1.tar.gz
+    else
+        wget -O $SRC_NAME.tar.gz http://sourceforge.net/projects/netcat/files/netcat/0.7.1/netcat-0.7.1.tar.gz
+    fi
+fi
+
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+
+cd $SRC_NAME
+./configure --prefix=$PREFIX_PATH
+
+make && make install clean
+
+cd ..
+rm -rf $SRC_NAME

@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+ps x | fzy | cut -d ' ' -f 1 | xargs kill -9

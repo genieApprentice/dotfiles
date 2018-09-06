@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: seall
+# key: seall
+# --
+SELECT * FROM $1;

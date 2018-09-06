@@ -1,0 +1,4 @@
+# key: drcolumn
+# name: drcolumn
+# --
+ALTER TABLE $1 DROP COLUMN $2;

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sedistinct
+# key: sedistinct
+# --
+SELECT DISTINCT $1 FROM $2;

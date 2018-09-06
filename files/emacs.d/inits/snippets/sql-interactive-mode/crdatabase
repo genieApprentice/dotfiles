@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: crdatabase
+# key: crdatabase
+# --
+CREATE DATABASE $1;

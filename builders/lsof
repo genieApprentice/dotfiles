@@ -1,0 +1,25 @@
+SRC_NAME="lsof_4.91"
+
+if [ ! -f $SRC_NAME.tar.gz ] ; then
+    if type "curl" > /dev/null 2>&1; then
+        curl -LO http://ftp.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof_4.91.tar.gz
+    else
+        wget http://ftp.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/lsof_4.91.tar.gz
+    fi
+fi
+
+echo  $SRC_NAME.tar.gz
+tar xzf $SRC_NAME.tar.gz
+if [ $SAVE_SOURCES -eq 0 ] ; then
+    rm $SRC_NAME.tar.gz
+fi
+cd $SRC_NAME
+tar xf ${SRC_NAME}_src.tar
+cd ${SRC_NAME}_src
+./Configure -n linux
+make
+install -v -m0755 lsof $PREFIX_PATH/bin &&
+install -v lsof.8 $PREFIX_PATH/share/man/man8
+
+cd ../../
+rm -rf $SRC_NAME

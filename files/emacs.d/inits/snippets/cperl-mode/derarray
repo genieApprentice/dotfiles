@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: derarray
+# key: derarray
+# --
+@{$1}

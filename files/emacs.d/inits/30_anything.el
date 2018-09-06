@@ -1,0 +1,5 @@
+(add-to-list 'load-path (concat el-path-not-package "anything"))
+(require 'anything-startup)
+(bind-key* "C-M-y" 'anything-show-kill-ring)
+(bind-key* "C-M-m" 'anything-man-woman)
+(add-to-list 'anything-sources anything-c-source-man-pages)
