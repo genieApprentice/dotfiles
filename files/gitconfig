@@ -23,6 +23,8 @@ ba = branch -a
 bm = branch --merged
 bn = branch --no-merged
 
+mm = merge master
+
 wc = whatchanged
 ls = log --stat
 lp = log -p
