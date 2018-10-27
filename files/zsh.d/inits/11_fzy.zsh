@@ -31,4 +31,5 @@ zle -N fzy-cdr
 bindkey '^[@' fzy-cdr
 
 alias fco="git branch -a | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !\$c{\$_}++' | grep -v -- \"->\" | fzy | xargs git checkout"
+alias fmerge="git branch -a | cut -b 3- | perl -pe 's#^remotes/origin/###' | perl -nlE 'say if !\$c{\$_}++' | grep -v -- \"->\" | fzy | xargs git merge"
 alias ghqrm="ghq list --full-path | fzy | xargs rm -r"
