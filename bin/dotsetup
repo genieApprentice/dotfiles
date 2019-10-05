@@ -11,6 +11,12 @@ export CPPFLAGS="-I$PREFIX_PATH/include -I$PREFIX_PATH/include/ncurses"
 export LDFLAGS="-L$PREFIX_PATH/lib"
 export LD_LIBRARY_PATH="$PREFIX_PATH/lib:$LD_LIBRARY_PATH"
 
+cd ~
+dirlist="tmp bck work local"
+for dirname in $dirlist; do
+    if [ ! -e $dirname ]; then mkdir $dirname; fi
+done
+
 for script in $BUILDERS; do
     cd $ROOTPATH/src
     . $ROOTPATH/builders/$script
