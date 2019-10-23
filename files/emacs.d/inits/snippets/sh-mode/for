@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: for
+# key: fory
+# --
+for $0 in ; do
+done
