@@ -1,0 +1,12 @@
+bind-key MS-f window-fullscreen
+bind-key MS-t "urxvt -fn 'xft:hack-fonts:pixelsize=14'"
+bind-key MS-w "firefox"
+bind-key MS-Return restart
+
+unbind-key M-Return
+unbind-key CM-f
+unbind-key CM-k
+unbind-key CM-n
+unbind-key CM-a
+unbind-key C-slash
+
